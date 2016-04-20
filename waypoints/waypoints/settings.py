@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'waypoints',
     'wptags',
+    'bookmarks',
 ]
 
 MIDDLEWARE_CLASSES = [
