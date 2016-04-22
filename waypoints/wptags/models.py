@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.forms.models import model_to_dict
 
 
 class Tag(models.Model):
@@ -8,6 +9,8 @@ class Tag(models.Model):
 
     def __str__(self):
         return '{tag} ({user})'.format(
-            tag=self.name,
-            user=self.user.username
+            tag=self.name
         )
+
+    def to_dict(self):
+        return model_to_dict(self)
