@@ -18,8 +18,10 @@ class UserBookmarkList(JSONResponseMixin, ListView):
         user = get_user_model().objects.get(
             username=self.kwargs.get('username', None)
         )
-        return [bookmark.to_dict() for bookmark in Bookmark.objects.filter(user=user)]
-        # return Bookmark.objects.filter(user=user)
+        return [
+            bookmark.to_dict()
+            for bookmark in Bookmark.objects.filter(user=user)
+        ]
 
     def render_to_response(self, context, **response_kwargs):
         return self.render_to_json_response(context, **response_kwargs)
