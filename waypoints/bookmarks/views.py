@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 from django.views.generic import ListView
 
@@ -15,12 +14,9 @@ class UserBookmarkList(JSONResponseMixin, ListView):
         return context.get('object_list', [])
 
     def get_queryset(self):
-        user = get_user_model().objects.get(
-            username=self.kwargs.get('username', None)
-        )
         return [
             bookmark.to_dict()
-            for bookmark in Bookmark.objects.filter(user=user)
+            for bookmark in Bookmark.objects.all()
         ]
 
     def render_to_response(self, context, **response_kwargs):

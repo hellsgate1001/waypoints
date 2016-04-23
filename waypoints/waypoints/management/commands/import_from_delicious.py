@@ -83,9 +83,9 @@ class Command(BaseCommand):
                     )
                     if tag != '':
                         try:
-                            the_tag = Tag.objects.get(name=tag)
+                            the_tag = Tag.objects.get(name=tag.strip(' '))
                         except Tag.DoesNotExist as e:
-                            the_tag = Tag(name=tag)
+                            the_tag = Tag(name=tag.strip(' '))
                             the_tag.save()
                         bookmark.tags.add(the_tag)
 
