@@ -25,4 +25,5 @@ class Bookmark(models.Model):
         bookmark_dict['tags'] = [
             Tag.objects.values('pk', 'name').get(pk=tag_id) for tag_id in bookmark_dict['tags']
         ]
+        bookmark_dict['saved'] = self.saved
         return bookmark_dict
