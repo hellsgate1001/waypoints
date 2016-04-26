@@ -2,3 +2,5 @@
 *.sql
 *.sqlite3
 **/node_modules/*
+frontend_remove/*
+*.log
