@@ -1,1 +1,7 @@
 <h1>Home</h1>
+<article class="waypoint" ng-repeat="waypoint in waypoints">
+    <h3><a href="{{ waypoint.url }}" target="_blank">{{ waypoint.title }}</a></h3>
+    <h4>Tags</h4>
+    <p>{{ buildTags(waypoint.tags) }}</p>
+    <p ng-if="waypoint.comment !== ''">{{ waypoint.comment }}</p>
+</article>

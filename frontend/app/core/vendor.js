@@ -5,11 +5,10 @@
         // Javascript
         require('angular');
         require('angular-ui-router');
-        require('angular-ui-bootstrap');
-        // require('highcharts-ng');
+//        require('angular-ui-bootstrap');
 
         // Styles
-        // require('../../node_modules/materialize-css/sass/materialize.scss');
+        require('../../node_modules/materialize-css/sass/materialize.scss');
         require('../scss/index.scss');
     };
 })();
