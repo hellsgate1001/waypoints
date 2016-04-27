@@ -1,15 +1,26 @@
-from django.http import JsonResponse
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
+
+from rest_framework import viewsets
 
 from waypoints.mixins import JSONResponseMixin
 
 from .models import Bookmark
+from .serializers import BookmarkSerializer
+
+
+class BookmarkViewSet(viewsets.ModelViewSet):
+    '''
+    API endpoint that allows bookmarks to be viewed or edited
+    '''
+    queryset = Bookmark.objects.all().order_by('-saved')
+    serializer_class = BookmarkSerializer
+
+
+class AddBookmark(JSONResponseMixin, CreateView):
+    model = Bookmark
 
 
 class UserBookmarkList(JSONResponseMixin, ListView):
-    response_class = JsonResponse
-    content_type = 'application/json'
-
     def get_data(self, context):
         return context.get('object_list', [])
 

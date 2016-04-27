@@ -36,8 +36,6 @@ class Command(BaseCommand):
 
         print 'Parsing export with %s rows' % len(soup.dl.contents)
         for i in range(len(soup.dl.contents)):
-            if i > 50:
-                break
             if soup.dl.contents[i].name == 'dt':
                 print(
                     '{row}: Creating new bookmark for {url}'.format(

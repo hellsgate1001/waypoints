@@ -8,7 +8,7 @@ class Tag(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return '{tag} ({user})'.format(
+        return '{tag}'.format(
             tag=self.name
         )
 
