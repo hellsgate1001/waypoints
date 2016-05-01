@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.forms.models import model_to_dict
 
@@ -27,3 +28,10 @@ class Bookmark(models.Model):
         ]
         bookmark_dict['saved'] = self.saved
         return bookmark_dict
+
+    def save(self, *args, **kwargs):
+        try:
+            u = self.user
+        except get_user_model().DoesNotExist:
+            self.user = get_user_model().objects.get(pk=1)
+        super(Bookmark, self).save(*args, **kwargs)

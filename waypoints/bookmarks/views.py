@@ -1,8 +1,10 @@
 from django.views.generic import CreateView, ListView
 
+from braces.views import CsrfExemptMixin
 from rest_framework import viewsets
 
 from waypoints.mixins import JSONResponseMixin
+from wptags.models import Tag
 
 from .models import Bookmark
 from .serializers import BookmarkSerializer
@@ -15,9 +17,25 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     queryset = Bookmark.objects.all().order_by('-saved')
     serializer_class = BookmarkSerializer
 
+    def create(self, request, *args, **kwargs):
+        # Tags need to be processed as objects. To allow this, convert the
+        # posted tag strings to Tag objects
+        tags = []
+        # import pdb;pdb.set_trace()
+        for t in request.data['tags'].split(','):
+            tag, created = Tag.objects.get_or_create(name=t.strip().lower())
+            tags.append(
+                {'id': tag.pk, 'name': tag.name}
+            )
+        request.data['tags'] = tags
+        return super(BookmarkViewSet, self).create(request, *args, **kwargs)
 
-class AddBookmark(JSONResponseMixin, CreateView):
+
+class AddBookmark(CsrfExemptMixin, JSONResponseMixin, CreateView):
     model = Bookmark
+
+    def post(self, request, *args, **kwargs):
+        import pdb;pdb.set_trace()
 
 
 class UserBookmarkList(JSONResponseMixin, ListView):

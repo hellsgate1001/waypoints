@@ -6,8 +6,6 @@ from .models import Bookmark
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
-    tags = TagSerializer()
-
     class Meta:
         model = Bookmark
         fields = [
@@ -19,3 +17,4 @@ class BookmarkSerializer(serializers.ModelSerializer):
             'comment',
             'tags'
         ]
+        depth = 1

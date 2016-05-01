@@ -4,3 +4,5 @@
 **/node_modules/*
 frontend_remove/*
 *.log
+frontend/build/*
+waypoints/static
