@@ -1,9 +1,14 @@
 (function(){
     'use strict';
+    console.log('In webpack config');
 
+    var webpack = require('webpack');
     var path = require('path');
 
     var APP = path.resolve(__dirname, './app');
+
+    // Whitelist for environment variables: we don't want to load all of them
+    var envWhitelist = ['API_BASE_URL'];
 
     module.exports = {
         context: APP,
@@ -50,6 +55,16 @@
                     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"
                 }
             ]
-        }
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                'process.env': Object.keys(process.env).reduce(function(o, k){
+                    if (envWhitelist.indexOf(k) >= 0) {
+                        o[k] = JSON.stringify(process.env[k]);
+                    }
+                    return o;
+                }, {})
+            })
+        ]
     };
 })();
