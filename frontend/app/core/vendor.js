@@ -5,7 +5,7 @@
         // Javascript
         require('angular');
         require('angular-ui-router');
-//        require('angular-ui-bootstrap');
+        require('angular-ui-bootstrap');
 
         // Styles
         require('../../node_modules/materialize-css/sass/materialize.scss');

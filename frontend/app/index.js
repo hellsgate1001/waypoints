@@ -1,9 +1,11 @@
 import homeCtrl from './controllers/homeCtrl.js';
 
+import modalService from './services/modalService.js';
+
 (function(){
     'use strict';
 
-    var wp = angular.module('wp', ['ui.router']);
+    var wp = angular.module('wp', ['ui.router', 'ui.bootstrap']);
 
     wp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise('/');
@@ -21,6 +23,8 @@ import homeCtrl from './controllers/homeCtrl.js';
     }]);
 
     wp.controller('HomeCtrl', homeCtrl);
+
+    wp.factory('modalService', modalService);
 
     module.exports = wp;
 })();

@@ -1,7 +1,10 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $http) {
+    var homeCtrl = function($scope, $http, modalService) {
         $scope.apiBaseUrl = process.env.API_BASE_URL;
+        $scope.t1 = modalService.testOne;
+        $scope.t2 = modalService.testTwo;
+
         $scope.fields = {
             user: '',
             url: '',
