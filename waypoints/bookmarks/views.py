@@ -17,6 +17,9 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     queryset = Bookmark.objects.all().order_by('-saved')
     serializer_class = BookmarkSerializer
 
+    def get_queryset(self):
+        return self.queryset[0:10]
+
     def create(self, request, *args, **kwargs):
         # Tags need to be processed as objects. To allow this, convert the
         # posted tag strings to Tag objects
