@@ -1,9 +1,20 @@
 from django.http import JsonResponse
 from django.views.generic import ListView
 
+from rest_framework import viewsets
+
 from waypoints.mixins import JSONResponseMixin
 
 from .models import Tag
+from .serializers import TagSerializer
+
+
+class TagsViewSet(viewsets.ModelViewSet):
+    '''
+    API endpoint that allows tags to be viewed or edited
+    '''
+    queryset = Tag.objects.all()[0:30]
+    serializer_class = TagSerializer
 
 
 class UserTagList(JSONResponseMixin, ListView):

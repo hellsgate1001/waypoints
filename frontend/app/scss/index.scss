@@ -1,0 +1,8 @@
+article {
+  border: 1px solid #333;
+  border-radius: 1em;
+  padding: 0.5em;
+  + article {
+    margin-top: 18px;
+  }
+}

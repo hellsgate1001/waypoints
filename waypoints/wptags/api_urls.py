@@ -1,8 +1,14 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 
-from .views import UserTagList
+from rest_framework import routers
 
+from .views import TagsViewSet, UserTagList
+
+
+router = routers.DefaultRouter()
+router.register(r'tags', TagsViewSet)
 
 urlpatterns = [
-    url(r'^$', UserTagList.as_view(), name='user_tags'),
+    url(r'^v1$', UserTagList.as_view(), name='user_tags'),
+    url(r'^', include(router.urls)),
 ]
