@@ -1,6 +1,5 @@
 import homeCtrl from './controllers/homeCtrl.js';
-
-import modalService from './services/modalService.js';
+import modalCtrl from './controllers/modalCtrl.js';
 
 (function(){
     'use strict';
@@ -23,8 +22,8 @@ import modalService from './services/modalService.js';
     }]);
 
     wp.controller('HomeCtrl', homeCtrl);
+    wp.controller('ModalCtrl', modalCtrl);
 
-    wp.factory('modalService', modalService);
 
     module.exports = wp;
 })();

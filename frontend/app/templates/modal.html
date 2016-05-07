@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{modalTitle}}</h3>
+</div>
+<div class="modal-body">
+
+  <h4>{{modalHeading}}</h4>
+  <p id="modalMessage">
+    {{message}}
+  </p>
+
+</div>
+
+
+<div class="modal-footer">
+  <button id="closeModalYes" type="button" class="btn-flat grey lighten-4" ng-click="ok()" ng-show="buttonSet==='yesNo'">Yes</button>
+  <button id="closeModalNo" type="button" class="btn-flat grey lighten-4" ng-click="cancel()" ng-show="buttonSet==='yesNo'">No</button>
+  <button id="closeModalOk" type="button" class="btn-flat grey lighten-4" ng-click="dismiss()" ng-show="buttonSet==='ok'">OK</button>
+</div>
