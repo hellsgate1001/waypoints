@@ -1,14 +1,16 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $http, $uibModal, $document) {
+    var homeCtrl = function($scope, $http, $uibModal, $document, $templateRequest, $sce) {
         var tagInfo = [];
 
         $scope.apiBaseUrl = process.env.API_BASE_URL;
         $scope.tagCloudArray = [];
         $scope.tagCloud = {};
+        $scope.formTemplate = '';
+        // $scope.getFormTemplate = getFormTemplate;
 
         $scope.fields = {
-            user: '',
+            user: 1,
             url: '',
             title: '',
             comment: '',
@@ -18,21 +20,18 @@
         $scope.waypoints = [];
         $scope.buildTags = buildTags;
         $scope.addBookmark = addBookmark;
-        console.log('length: ' + angular.element(document.querySelector('#modal-container')).length);
+
         activate();
 
         function activate() {
             $http.get($scope.apiBaseUrl + 'api/bookmarks/bookmarks/').then(function success(response){
-                console.log('Get list success');
                 console.log(response);
                 $scope.waypoints = response.data;
             }, function error(response){
                 console.log('Get list ERROR');
-                console.log(response);
             });
 
             $http.get($scope.apiBaseUrl + 'api/tags/tags/').then(function success(response){
-                console.log(response);
                 response.data.forEach(function(item){
                     $scope.tagCloudArray.push({
                         text: item.name,
@@ -67,7 +66,8 @@
                     messageParts: {
                         title: 'Add Bookmark',
                         heading: 'Add a new bookmark',
-                        message: 'Here is my test message',
+                        message: 'Test Message',
+                        messageTemplate: 'templates/includes/addBookmarkForm.html',
                         valid: true,
                         buttonSet: 'ok'
                     }
