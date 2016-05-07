@@ -12,14 +12,6 @@
         $scope.cancel = cancel;
         $scope.dismiss = dismiss;
 
-        // if ($scope.messageTemplate !== '') {
-        //     var tUrl = $sce.getTrustedResourceUrl('templates/includes/addBookmarkForm.html');
-        //     $templateRequest(tUrl).then(function(template){
-        //         $scope.formTemplate = template;
-        //         return $scope.formTemplate;
-        //     });
-        // }
-
         // Functions
         function ok() {
             $uibModalInstance.close(true);

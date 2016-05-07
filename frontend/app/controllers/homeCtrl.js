@@ -69,7 +69,7 @@
                         message: 'Test Message',
                         messageTemplate: 'templates/includes/addBookmarkForm.html',
                         valid: true,
-                        buttonSet: 'ok'
+                        buttonSet: 'submitCancel'
                     }
                 }
             }).result.then(function close(k){
