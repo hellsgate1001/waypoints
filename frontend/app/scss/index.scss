@@ -1,8 +1,22 @@
+$base-color: #eb5e00;
+$darkest: #923b00;
+$darker: #bc4c00;
+$lighter: #ff832f;
+$lightest: #ff9d5b;
+
+body {
+    background-color: $lighter;
+}
+a {
+    color: $darkest;
+}
+
 article {
-  border: 1px solid #333;
-  border-radius: 1em;
-  padding: 0.5em;
-  + article {
-    margin-top: 18px;
-  }
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 1em;
+    padding: 0.5em;
+    + article {
+        margin-top: 18px;
+    }
 }

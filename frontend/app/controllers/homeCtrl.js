@@ -6,6 +6,8 @@
         $scope.apiBaseUrl = process.env.API_BASE_URL;
         $scope.t1 = modalService.testOne;
         $scope.t2 = modalService.testTwo;
+        $scope.tagCloudArray = [];
+        $scope.tagCloud = {};
 
         $scope.fields = {
             user: '',
@@ -65,6 +67,13 @@
 
         $http.get($scope.apiBaseUrl + 'api/tags/tags/').then(function success(response){
             console.log(response);
+            response.data.forEach(function(item){
+                $scope.tagCloudArray.push({
+                    text: item.name,
+                    weight: item.size
+                });
+            });
+            $scope.tagCloud = JSON.stringify($scope.tagCloudArray);
         }, function error(response){
             console.log('error');
         });

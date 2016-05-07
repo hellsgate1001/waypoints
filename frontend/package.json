@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "angular-animate": "^1.5.1",
+    "angular-tag-cloud": "^0.3.0",
     "angular-touch": "^1.5.1",
     "angular-ui-router": "^0.2.18",
     "import-glob-loader": "^1.1.0",
@@ -38,6 +39,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/webpack/bin/webpack.js",
     "dev": "webpack-dev-server --devtool eval --config webpack.config.js --progress --colors --hot --content-base app --host 0.0.0.0"
   },
   "author": "",
