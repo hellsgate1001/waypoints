@@ -69,11 +69,32 @@
                         message: 'Test Message',
                         messageTemplate: 'templates/includes/addBookmarkForm.html',
                         valid: true,
+                        formName: 'addBookmarkForm',
                         buttonSet: 'submitCancel'
                     }
                 }
-            }).result.then(function close(k){
-                console.log('closed: ' + k);
+            }).result.then(function close(result){
+                console.log('closed: ' + result);
+                if (result === true) {
+                    // Success, show a message which can be closed
+                    $uibModal.open({
+                        animation: false,
+                        templateUrl: 'templates/modal.html',
+                        controller: 'ModalCtrl',
+                        resolve: {
+                            messageParts: {
+                                title: 'Bookmark Added',
+                                heading: 'Successfully added bookmark &amp; tags',
+                                message: 'Your bookmark and tags have been added',
+                                buttonSet: 'ok'
+                            }
+                        }
+                    });
+                } else {
+                    // some problem with the post
+                }
+            }, function dismiss(){
+
             });
             // var fields = {
             //     user: 1,

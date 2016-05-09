@@ -23,14 +23,14 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         # Tags need to be processed as objects. To allow this, convert the
         # posted tag strings to Tag objects
-        tags = []
-        # import pdb;pdb.set_trace()
-        for t in request.data['tags'].split(','):
-            tag, created = Tag.objects.get_or_create(name=t.strip().lower())
-            tags.append(
-                {'id': tag.pk, 'name': tag.name}
-            )
-        request.data['tags'] = tags
+        # tags = []
+        # request.data = request.data.copy()
+        # for t in request.data['tags'].split(','):
+        #     tag, created = Tag.objects.get_or_create(name=t.strip().lower())
+        #     tags.append(
+        #         {'id': tag.pk, 'name': tag.name}
+        #     )
+        # request.data['tags'] = tags
         return super(BookmarkViewSet, self).create(request, *args, **kwargs)
 
 
