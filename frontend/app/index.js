@@ -1,5 +1,9 @@
+// Import controllers
 import homeCtrl from './controllers/homeCtrl.js';
 import modalCtrl from './controllers/modalCtrl.js';
+
+// Import directives
+import headerDirective from './directives/headerDirective.js';
 
 (function(){
     'use strict';
@@ -24,6 +28,7 @@ import modalCtrl from './controllers/modalCtrl.js';
     wp.controller('HomeCtrl', homeCtrl);
     wp.controller('ModalCtrl', modalCtrl);
 
+    wp.directive('headerDirective', headerDirective);
 
     module.exports = wp;
 })();
