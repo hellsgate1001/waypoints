@@ -4,6 +4,7 @@ import modalCtrl from './controllers/modalCtrl.js';
 
 // Import directives
 import headerDirective from './directives/headerDirective.js';
+import footerDirective from './directives/footerDirective.js';
 
 (function(){
     'use strict';
@@ -29,6 +30,7 @@ import headerDirective from './directives/headerDirective.js';
     wp.controller('ModalCtrl', modalCtrl);
 
     wp.directive('headerDirective', headerDirective);
+    wp.directive('footerDirective', footerDirective);
 
     module.exports = wp;
 })();
