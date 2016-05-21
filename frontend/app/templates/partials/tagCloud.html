@@ -1,4 +1,5 @@
   <label>Search tags: <input ng-model="tagFilter"></label>
   <ul class="tag-cloud--tag-list">
+    <li><a href="#" class="tag-cloud--tag-list--link" ng-click="clearFilter()">All</a></li>
     <li ng-repeat="tag in tags | orderBy:'name' | filter:tagFilter"><a href="#" class="tag-cloud--tag-list--link" ng-click="setBookmarkTagFilter(tag.name)">{{ tag.name }}</a></li>
   </ul>

@@ -8,6 +8,7 @@
         $scope.offset = 0;
         $scope.perPage = 30;
         $scope.loadTags = loadTags;
+        $scope.clearFilter = clearFilter;
 
         $rootScope.bookmarkTagFilter = '';
 
@@ -15,6 +16,11 @@
 
         function activate() {
             $scope.loadTags();
+        }
+
+        function clearFilter() {
+            $scope.tagFilter = '';
+            setBookmarkTagFilter('')
         }
 
         function setBookmarkTagFilter(tagName) {
