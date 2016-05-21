@@ -1,4 +1,4 @@
-  <h2>Tags</h2>
-  <ul>
-    <li ng-repeat="tag in tags | orderBy:'name'">{{ tag.name }}</li>
+  <label>Search tags: <input ng-model="tagFilter"></label>
+  <ul class="tag-cloud--tag-list">
+    <li ng-repeat="tag in tags | orderBy:'name' | filter:tagFilter"><a href="#" class="tag-cloud--tag-list--link">{{ tag.name }}</a></li>
   </ul>

@@ -87,3 +87,30 @@ article {
     top: 0;
     width: 100%;
 }
+
+// Tag Cloud
+.tag-cloud {
+    label {
+        color: $darkest;
+        font-size: 1.2em;
+        input {
+            background-color: #ffffff;
+            border: solid 1px $darkest;
+            border-radius: 0.3em;
+            font-size: 1em;
+            margin-bottom: 0;
+            padding: 0 0.2em;
+
+            &:focus {
+                border-bottom-color: $darkest;
+            }
+        }
+    }
+    .tag-cloud--tag-list {
+        .tag-cloud--link {
+            &:hover {
+                color: $darker;
+            }
+        }
+    }
+}
