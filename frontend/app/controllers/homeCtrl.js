@@ -19,6 +19,7 @@
         $scope.waypoints = [];
         $scope.buildTags = buildTags;
         $scope.addBookmark = addBookmark;
+        $scope.loadBookmarks = loadBookmarks;
 
         activate();
 
@@ -91,6 +92,10 @@
             }, function dismiss(){
 
             });
+        }
+
+        function loadBookmarks() {
+            console.log('loadBookmarks');
         }
 
     };
