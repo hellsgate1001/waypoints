@@ -107,9 +107,13 @@ article {
         }
     }
     .tag-cloud--tag-list {
-        .tag-cloud--link {
+        .tag-cloud--tag-list--link {
             &:hover {
+                background-color: $lightest;
                 color: $darker;
+                display: block;
+                height: 100%;
+                width: 100%;
             }
         }
     }
