@@ -6,6 +6,7 @@
         require('angular');
         require('angular-ui-router');
         require('angular-ui-bootstrap');
+        require('angular-resource');
 
         // Styles
         require('../../node_modules/materialize-css/sass/materialize.scss');

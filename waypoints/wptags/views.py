@@ -13,7 +13,7 @@ class TagsViewSet(viewsets.ModelViewSet):
     '''
     API endpoint that allows tags to be viewed or edited
     '''
-    queryset = Tag.objects.all()[0:30]
+    queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 

@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "angular-animate": "^1.5.1",
+    "angular-resource": "^1.5.5",
     "angular-tag-cloud": "^0.3.0",
     "angular-touch": "^1.5.1",
     "angular-ui-router": "^0.2.18",
