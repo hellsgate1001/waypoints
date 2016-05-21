@@ -1,7 +1,7 @@
 ;(function(){
     'use strict';
     var tagFactory = function($resource){
-        return $resource('http://api.waypoints.local/api/tags/tags/');
+        return $resource(process.env.API_BASE_URL + 'api/tags/tags/');
     };
 
     module.exports = tagFactory;

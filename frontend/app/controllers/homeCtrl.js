@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $http, $uibModal, $document, $templateRequest, $sce) {
+    var homeCtrl = function($scope, $rootScope, $http, $uibModal, $document, $templateRequest, $sce) {
         var tagInfo = [];
 
         $scope.apiBaseUrl = process.env.API_BASE_URL;
@@ -24,7 +24,6 @@
 
         function activate() {
             $http.get($scope.apiBaseUrl + 'api/bookmarks/bookmarks/').then(function success(response){
-                console.log(response);
                 $scope.waypoints = response.data;
             }, function error(response){
                 console.log('Get list ERROR');
