@@ -9,6 +9,7 @@ import footerDirective from './directives/footerDirective.js';
 
 // Import factories and services
 import Tag from './factories/tagFactory.js';
+import Bookmark from './factories/bookmarkFactory.js';
 
 (function(){
     'use strict';
@@ -42,6 +43,7 @@ import Tag from './factories/tagFactory.js';
     wp.directive('footerDirective', footerDirective);
 
     wp.factory('Tag', Tag);
+    wp.factory('Bookmark', Bookmark);
 
     module.exports = wp;
 })();

@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $rootScope, $http, $uibModal, $document, $templateRequest, $sce) {
+    var homeCtrl = function($scope, $uibModal, $document, $templateRequest, $sce, Bookmark) {
         var tagInfo = [];
 
         $scope.apiBaseUrl = process.env.API_BASE_URL;
@@ -16,6 +16,7 @@
             tags: ''
         }
 
+        $scope.bookmarkPageInfo = {};
         $scope.waypoints = [];
         $scope.buildTags = buildTags;
         $scope.addBookmark = addBookmark;
@@ -24,22 +25,8 @@
         activate();
 
         function activate() {
-            $http.get($scope.apiBaseUrl + 'api/bookmarks/bookmarks/').then(function success(response){
-                $scope.waypoints = response.data;
-            }, function error(response){
-                console.log('Get list ERROR');
-            });
-
-            $http.get($scope.apiBaseUrl + 'api/tags/tags/').then(function success(response){
-                response.data.forEach(function(item){
-                    $scope.tagCloudArray.push({
-                        text: item.name,
-                        weight: item.size
-                    });
-                });
-                $scope.tagCloud = JSON.stringify($scope.tagCloudArray);
-            }, function error(response){
-                console.log('error');
+            $scope.bookmarkPageInfo = Bookmark.query(function(){
+                $scope.waypoints = $scope.bookmarkPageInfo.results;
             });
         }
 
