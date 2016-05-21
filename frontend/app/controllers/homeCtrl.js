@@ -1,12 +1,16 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $uibModal, $document, $templateRequest, $sce, Bookmark) {
+    var homeCtrl = function($scope, $rootScope, $timeout, $uibModal, $document, $templateRequest, $sce, Bookmark) {
         var tagInfo = [];
+
+        $rootScope.offset = 30;
 
         $scope.apiBaseUrl = process.env.API_BASE_URL;
         $scope.tagCloudArray = [];
         $scope.tagCloud = {};
         $scope.formTemplate = '';
+        $scope.offset = 0;
+        $scope.perPage = 30;
 
         $scope.fields = {
             user: 1,
@@ -25,18 +29,18 @@
         activate();
 
         function activate() {
-            $scope.bookmarkPageInfo = Bookmark.query(function(){
-                $scope.waypoints = $scope.bookmarkPageInfo.results;
-            });
+            $scope.loadBookmarks();
         }
 
         function buildTags(tags) {
             var tagLinks = [];
-            tags.forEach(function(tag){
-                tagLinks.push(
-                    tag.name
-                );
-            });
+            if (tags) {
+                tags.forEach(function(tag){
+                    tagLinks.push(
+                        tag.name
+                    );
+                });
+            }
             return tagLinks.join(',');
         }
 
@@ -82,7 +86,13 @@
         }
 
         function loadBookmarks() {
-            console.log('loadBookmarks');
+            $scope.bookmarkPageInfo = Bookmark.query({offset: $scope.offset}, function(){
+                $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
+                if ($scope.bookmarkPageInfo.next !== null) {
+                    $scope.offset += $scope.perPage;
+                    $timeout($scope.loadBookmarks, 500);
+                }
+            });
         }
 
     };

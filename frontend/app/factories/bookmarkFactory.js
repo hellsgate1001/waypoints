@@ -1,8 +1,8 @@
 ;(function(){
     'use strict';
-    var tagFactory = function($resource){
+    var bookmarkFactory = function($resource){
         return $resource(
-            process.env.API_BASE_URL + 'api/tags/tags/',
+            process.env.API_BASE_URL + 'api/bookmarks/bookmarks/',
             null,
             {
                 query: {
@@ -19,5 +19,5 @@
         );
     };
 
-    module.exports = tagFactory;
+    module.exports = bookmarkFactory;
 })();
