@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var authInterceptorFactory = function(auth) {
+    var authInterceptorFactory = function($injector, auth) {
         return {
             // automatically attach Authorization header
             request: function(config) {
@@ -17,6 +17,14 @@
                     auth.saveToken(res.data.token);
                 }
                 return res;
+            },
+
+            // If the token is missing, redirect to login page
+            responseError: function(res) {
+                if (res.status === 401) {
+                    $injector.get('$state').go('login');
+                }
+                console.log('Res:', res);
             }
         }
     };
