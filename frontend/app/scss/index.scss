@@ -1,13 +1,13 @@
-$base-color: #4caf50;
-$darkest: #1b5e20;
-$darker: #388e3c;
-$lighter: #a5d6a7;
-$lightest: #e8f5e9;
+$base-color: #607d8b;
+$darkest: #263238;
+$darker: #455a64;
+$lighter: #b0bec5;
+$lightest: #eceff1;
 
 $modal-padding: 24px;
 
 body {
-    background-color: $lighter;
+    background-color: $lightest;
 }
 a {
     color: $darkest;
@@ -32,7 +32,7 @@ form {
         border-radius: 3px;
     }
     label {
-        color:#333333;
+        color:$darkest;
         font-size: 1.6rem;
     }
 }
@@ -72,7 +72,7 @@ form {
         }
     }
     .modal-footer {
-        background-color: $darker;
+        background-color: $base-color;
         border-radius: 0;
         padding: 0 $modal-padding;
 
@@ -120,4 +120,15 @@ form {
             }
         }
     }
+}
+
+// Materialize overrides
+.btn {
+    &:hover {
+        background-color: $darkest;
+    }
+}
+.btn-flat {
+    background-color: $darker;
+    color: #ffffff;
 }

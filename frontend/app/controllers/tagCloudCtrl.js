@@ -30,7 +30,6 @@
 
         function loadTags() {
             $scope.tagPageInfo = Tag.query({offset: $scope.offset}, function(){
-                console.log('post wuery');
                 $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
                 if ($scope.tagPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;

@@ -24,7 +24,6 @@
                 if (res.status === 401) {
                     $injector.get('$state').go('login');
                 }
-                console.log('Res:', res);
             }
         }
     };
