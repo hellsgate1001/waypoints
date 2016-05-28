@@ -1,14 +1,12 @@
 (function(){
     'use strict';
-    console.log('In webpack config');
-
     var webpack = require('webpack');
     var path = require('path');
 
     var APP = path.resolve(__dirname, './app');
 
     // Whitelist for environment variables: we don't want to load all of them
-    var envWhitelist = ['API_BASE_URL'];
+    var envWhitelist = ['API_BASE_URL', 'HOME'];
 
     module.exports = {
         context: APP,

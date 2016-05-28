@@ -8,16 +8,21 @@ import loginCtrl from './controllers/loginCtrl.js';
 import headerDirective from './directives/headerDirective.js';
 import footerDirective from './directives/footerDirective.js';
 
-// Import factories and services
+// Import factories
 import Tag from './factories/tagFactory.js';
 import Bookmark from './factories/bookmarkFactory.js';
+import AuthInterceptor from './factories/authInterceptorFactory.js';
+
+// Import services
+import auth from './services/authService.js';
+import user from './services/userService.js';
 
 (function(){
     'use strict';
 
     var wp = angular.module('wp', ['ui.router', 'ui.bootstrap', 'ngResource']);
 
-    wp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+    wp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
         $urlRouterProvider.otherwise('/');
 
         $stateProvider.state('home', {
@@ -38,6 +43,7 @@ import Bookmark from './factories/bookmarkFactory.js';
             controller: 'LoginCtrl'
         });
 
+        $httpProvider.interceptors.push('AuthInterceptor');
     }]);
 
     wp.controller('HomeCtrl', homeCtrl);
@@ -50,6 +56,10 @@ import Bookmark from './factories/bookmarkFactory.js';
 
     wp.factory('Tag', Tag);
     wp.factory('Bookmark', Bookmark);
+    wp.factory('AuthInterceptor', AuthInterceptor);
+
+    wp.service('auth', auth);
+    wp.service('user', user);
 
     module.exports = wp;
 })();
