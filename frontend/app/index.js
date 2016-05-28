@@ -2,6 +2,7 @@
 import homeCtrl from './controllers/homeCtrl.js';
 import modalCtrl from './controllers/modalCtrl.js';
 import tagCloudCtrl from './controllers/tagCloudCtrl.js';
+import loginCtrl from './controllers/loginCtrl.js';
 
 // Import directives
 import headerDirective from './directives/headerDirective.js';
@@ -31,6 +32,10 @@ import Bookmark from './factories/bookmarkFactory.js';
                     controller: 'TagCloudCtrl'
                 }
             }
+        }).state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
         });
 
     }]);
@@ -38,6 +43,7 @@ import Bookmark from './factories/bookmarkFactory.js';
     wp.controller('HomeCtrl', homeCtrl);
     wp.controller('ModalCtrl', modalCtrl);
     wp.controller('TagCloudCtrl', tagCloudCtrl);
+    wp.controller('LoginCtrl', loginCtrl);
 
     wp.directive('headerDirective', headerDirective);
     wp.directive('footerDirective', footerDirective);
