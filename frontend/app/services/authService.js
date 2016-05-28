@@ -12,7 +12,7 @@
             $window.localStorage.removeItem('jwtToken');
         }
 
-        function = isAuthed() {
+        function isAuthed() {
             var token = self.getToken();
             if (token) {
                 var params = self.parseJwt(token);
