@@ -8,6 +8,9 @@
                 if (config.url.indexOf(process.env.API_BASE_URL) === 0 && token) {
                     config.headers.Authorization = 'JWT ' + token;
                 }
+                // if (token) {
+                //     auth.refreshToken(token);
+                // }
                 return config;
             },
 
