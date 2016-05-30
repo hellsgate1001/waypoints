@@ -1,3 +1,5 @@
+@import "materialize-src/sass/materialize";
+
 $base-color: #607d8b;
 $darkest: #263238;
 $darker: #455a64;
@@ -13,6 +15,18 @@ a {
     color: $darkest;
 }
 
+// Waypoints
+.waypoints {
+    // @media #{$small-and-down} {
+    //     h4 {
+    //         font-size: 0.7em;
+    //     }
+
+    //     h5 {
+    //         font-size: 1em;
+    //     }
+    // }
+}
 article {
     background-color: #ffffff;
     border: 1px solid #333;

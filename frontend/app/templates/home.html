@@ -2,9 +2,11 @@
   <div class="col s12 m4">&nbsp;</div>
   <div class="col s12 m8 right-align"><a href="#" ng-click="addBookmark()">Add bookmark</a></div>
 </div>
-<article class="waypoint" ng-repeat="waypoint in waypoints | filter:bookmarkTagFilter">
-    <h4><a href="{{ waypoint.url }}" target="_blank">{{ waypoint.title }}</a></h4>
-    <h5>Tags</h5>
-    <p>{{ buildTags(waypoint.tags) }}</p>
-    <p ng-if="waypoint.comment !== ''">{{ waypoint.comment }}</p>
-</article>
+<div class="waypoints">
+    <article class="waypoint" ng-repeat="waypoint in waypoints | filter:bookmarkTagFilter">
+        <h4><a href="{{ waypoint.url }}" target="_blank">{{ waypoint.title }}</a></h4>
+        <h5>Tags</h5>
+        <p>{{ buildTags(waypoint.tags) }}</p>
+        <p ng-if="waypoint.comment !== ''">{{ waypoint.comment }}</p>
+    </article>
+</div>

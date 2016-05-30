@@ -9,7 +9,7 @@
         require('angular-resource');
 
         // Styles
-        require('../../node_modules/materialize-css/sass/materialize.scss');
+        // require('../../node_modules/materialize-css/sass/materialize.scss');
         require('../scss/index.scss');
     };
 })();
