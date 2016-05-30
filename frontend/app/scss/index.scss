@@ -17,23 +17,33 @@ a {
 
 // Waypoints
 .waypoints {
-    // @media #{$small-and-down} {
-    //     h4 {
-    //         font-size: 0.7em;
-    //     }
+    @media #{$small-and-down} {
+        h4 {
+            font-size: 1.4em;
+            margin: 0.4rem 0 0.28rem;
+        }
 
-    //     h5 {
-    //         font-size: 1em;
-    //     }
-    // }
-}
-article {
-    background-color: #ffffff;
-    border: 1px solid #333;
-    border-radius: 1em;
-    padding: 0.5em;
-    + article {
-        margin-top: 18px;
+        h5 {
+            font-size: 0.9em;
+        }
+    }
+
+    article {
+        background-color: #ffffff;
+        border: 1px solid #333;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        @media #{$small-and-down} {
+            padding: 0.3rem
+        }
+        + article {
+            margin-top: 18px;
+        }
+
+        .waypoint--tags {
+            font-size: 1.2rem;
+            margin: 0;
+        }
     }
 }
 

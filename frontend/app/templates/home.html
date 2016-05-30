@@ -6,7 +6,7 @@
     <article class="waypoint" ng-repeat="waypoint in waypoints | filter:bookmarkTagFilter">
         <h4><a href="{{ waypoint.url }}" target="_blank">{{ waypoint.title }}</a></h4>
         <h5>Tags</h5>
-        <p>{{ buildTags(waypoint.tags) }}</p>
+        <p class="waypoint--tags">{{ buildTags(waypoint.tags) }}</p>
         <p ng-if="waypoint.comment !== ''">{{ waypoint.comment }}</p>
     </article>
 </div>
