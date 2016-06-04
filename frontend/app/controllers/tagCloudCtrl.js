@@ -33,7 +33,7 @@
                 $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
                 if ($scope.tagPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    $timeout($scope.loadTags, 350);
+                    // $timeout($scope.loadTags, 350);
                 }
             });
         }

@@ -1,6 +1,8 @@
 <div class="row">
-  <div class="col s12 m4">&nbsp;</div>
-  <div class="col s12 m8 right-align"><a href="#" ng-click="addBookmark()">Add bookmark</a></div>
+    <div class="col s12 m4">
+        <a href="#!" ng-click="openTags()">Tags</a>
+    </div>
+    <div class="col s12 m8 right-align"><a href="#" ng-click="addBookmark()">Add bookmark</a></div>
 </div>
 <div class="waypoints">
     <article class="waypoint" ng-repeat="waypoint in waypoints | filter:bookmarkTagFilter">
