@@ -36,7 +36,6 @@
         function openTags($event) {
             var sidebar = angular.element(document.querySelector('#sidebar'));
             sidebar.addClass('sidebar-show');
-            console.log(sidebar);
         }
 
         function buildTags(tags) {
@@ -97,7 +96,7 @@
                 $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
                 if ($scope.bookmarkPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    // $timeout($scope.loadBookmarks, 500);
+                    $timeout($scope.loadBookmarks, 500);
                 }
             });
         }

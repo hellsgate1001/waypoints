@@ -24,8 +24,10 @@
         }
 
         function setBookmarkTagFilter(tagName) {
-            console.log(tagName);
+            var sidebar = angular.element(document.querySelector('#sidebar'));
             $rootScope.bookmarkTagFilter = tagName;
+            // Hide the tag cloud again on mobile
+            sidebar.removeClass('sidebar-show');
         }
 
         function loadTags() {
@@ -33,7 +35,7 @@
                 $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
                 if ($scope.tagPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    // $timeout($scope.loadTags, 350);
+                    $timeout($scope.loadTags, 350);
                 }
             });
         }
