@@ -8,6 +8,7 @@
         $scope.valid = messageParts.valid;
         $scope.buttonSet = messageParts.buttonSet;
         $scope.fields = {};
+        $scope.apiBaseUrl = process.env.API_BASE_URL;
 
         $scope.ok = ok;
         $scope.cancel = cancel;
@@ -32,7 +33,7 @@
             console.log($scope.fields);
 
             $http.post(
-                'http://api.waypoints.local/api/bookmarks/bookmarks/',
+                $scope.apiBaseUrl + 'api/bookmarks/bookmarks/',
                 $scope.fields
             ).then(function success(response){
                 console.log('Success');
