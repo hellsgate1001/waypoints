@@ -16,8 +16,11 @@
         $scope.submit = submit;
 
         // Functions
-        function ok() {
+        function ok(response) {
             $uibModalInstance.close(true);
+            if (messageParts.successFunction) {
+                messageParts.successFunction(response);
+            }
         }
 
         function cancel() {
@@ -29,15 +32,12 @@
         }
 
         function submit() {
-            console.log('Submitted');
-            console.log($scope.fields);
-
             $http.post(
                 $scope.apiBaseUrl + 'api/bookmarks/bookmarks/',
                 $scope.fields
             ).then(function success(response){
                 console.log('Success');
-                $scope.ok();
+                $scope.ok(response);
             }, function error(response){
                 console.log('Error');
             });

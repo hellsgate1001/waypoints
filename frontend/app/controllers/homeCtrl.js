@@ -26,11 +26,16 @@
         $scope.addBookmark = addBookmark;
         $scope.loadBookmarks = loadBookmarks;
         $scope.openTags = openTags;
+        $scope.submitAddBookmark = submitAddBookmark;
 
         activate();
 
         function activate() {
             $scope.loadBookmarks();
+        }
+
+        function submitAddBookmark(formValid) {
+            console.log('submit it');
         }
 
         function openTags($event) {
@@ -62,7 +67,8 @@
                         message: 'Test Message',
                         messageTemplate: 'templates/includes/addBookmarkForm.html',
                         valid: true,
-                        buttonSet: 'submitCancel'
+                        buttonSet: 'submitCancel',
+                        successFunction: bookmarkAdded
                     }
                 }
             }).result.then(function close(result){
@@ -91,12 +97,18 @@
             });
         }
 
+        function bookmarkAdded(response) {
+            if (response.status === 201) {
+                $scope.waypoints.unshift(response.data);
+            }
+        }
+
         function loadBookmarks() {
             $scope.bookmarkPageInfo = Bookmark.query({offset: $scope.offset}, function(){
                 $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
                 if ($scope.bookmarkPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    $timeout($scope.loadBookmarks, 500);
+                    // $timeout($scope.loadBookmarks, 500);
                 }
             });
         }
