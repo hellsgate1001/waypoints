@@ -11,11 +11,27 @@
         $scope.clearFilter = clearFilter;
 
         $rootScope.bookmarkTagFilter = '';
+        $rootScope.bookmarkCriteriaMatch = bookmarkCriteriaMatch;
 
         activate();
 
         function activate() {
             $scope.loadTags();
+        }
+
+        function bookmarkCriteriaMatch() {
+            return function(waypoint){
+                var filterResult = false
+                    , validTag = false;
+
+                waypoint.tags.forEach(function(tag){
+                    if ($rootScope.bookmarkTagFilter === '' || tag.name === $rootScope.bookmarkTagFilter) {
+                        validTag = true;
+                    }
+                });
+
+                return validTag;
+            }
         }
 
         function clearFilter() {
@@ -35,7 +51,7 @@
                 $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
                 if ($scope.tagPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    // $timeout($scope.loadTags, 350);
+                    $timeout($scope.loadTags, 350);
                 }
             });
         }
