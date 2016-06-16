@@ -3,6 +3,7 @@ import homeCtrl from './controllers/homeCtrl.js';
 import modalCtrl from './controllers/modalCtrl.js';
 import tagCloudCtrl from './controllers/tagCloudCtrl.js';
 import loginCtrl from './controllers/loginCtrl.js';
+import addBookmarkModalCtrl from './controllers/addBookmarkModalCtrl.js';
 
 // Import directives
 import headerDirective from './directives/headerDirective.js';
@@ -16,6 +17,7 @@ import AuthInterceptor from './factories/authInterceptorFactory.js';
 // Import services
 import auth from './services/authService.js';
 import user from './services/userService.js';
+import wpModal from './services/modalService.js';
 
 (function(){
     'use strict';
@@ -50,6 +52,7 @@ import user from './services/userService.js';
     wp.controller('ModalCtrl', modalCtrl);
     wp.controller('TagCloudCtrl', tagCloudCtrl);
     wp.controller('LoginCtrl', loginCtrl);
+    wp.controller('AddBookmarkModalCtrl', addBookmarkModalCtrl);
 
     wp.directive('headerDirective', headerDirective);
     wp.directive('footerDirective', footerDirective);
@@ -60,6 +63,7 @@ import user from './services/userService.js';
 
     wp.service('auth', auth);
     wp.service('user', user);
+    wp.service('wpModal', wpModal);
 
     module.exports = wp;
 })();

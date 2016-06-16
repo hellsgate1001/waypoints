@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $rootScope, $timeout, $uibModal, $document, $templateRequest, $sce, Bookmark) {
+    var homeCtrl = function($scope, $rootScope, $timeout, $uibModal, $document, $templateRequest, $sce, Bookmark, wpModal) {
         var tagInfo = [];
 
         $rootScope.offset = 30;
@@ -26,7 +26,8 @@
         $scope.addBookmark = addBookmark;
         $scope.loadBookmarks = loadBookmarks;
         $scope.openTags = openTags;
-        $scope.submitAddBookmark = submitAddBookmark;
+
+        $scope.testModalService = testModalService;
 
         activate();
 
@@ -34,8 +35,11 @@
             $scope.loadBookmarks();
         }
 
-        function submitAddBookmark(formValid) {
-            console.log('submit it');
+        function testModalService() {
+            var addBookmarkModalDefaults = {
+                controller: 'AddBookmarkModalCtrl'
+            };
+            wpModal.showModal(addBookmarkModalDefaults);
         }
 
         function openTags($event) {

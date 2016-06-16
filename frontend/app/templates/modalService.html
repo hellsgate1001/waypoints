@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{ modalOptions.title }}</h3>
+</div>
+<div class="modal-body">
+
+  <h4>{{ modalOptions.heading }}</h4>
+  <p id="modalMessage" ng-include="modalOptions.messageTemplate"></p>
+
+</div>
+
+
+<div class="modal-footer">
+  <button id="closeModalYes" type="button" class="btn btn-flat" ng-click="ok()" ng-show="modalOptions.buttonSet==='yesNo'">Yes</button>
+  <button id="closeModalNo" type="button" class="btn btn-flat" ng-click="cancel()" ng-show="modalOptions.buttonSet==='yesNo'">No</button>
+  <button id="closeModalOk" type="button" class="btn btn-flat" ng-click="dismiss()" ng-show="modalOptions.buttonSet==='ok'">OK</button>
+  <button id="closeModalCancel" type="button" class="btn btn-flat" ng-click="modalOptions.dismiss()" ng-show="modalOptions.buttonSet==='cancel'">Cancel</button>
+</div>

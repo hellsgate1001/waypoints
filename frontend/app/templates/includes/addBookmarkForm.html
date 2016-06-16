@@ -1,11 +1,11 @@
 <form novalidate="" name="addBookmarkForm" id="addBookmarkForm" ng-submit="submitAddBookmark(addBookmarkForm.$valid)">
     <div class="row">
         <div class="col s3"><label for="title">Title:</label></div>
-        <div class="col s9"><input type="text" name="title" ng-model="fields.title" /></div>
+        <div class="col s9"><input type="text" name="title" ng-model="fields.title" required /></div>
     </div>
     <div class="row">
         <div class="col s3"><label for="url">URL:</label></div>
-        <div class="col s9"><input type="text" name="url" ng-model="fields.url" /></div>
+        <div class="col s9"><input type="text" name="url" ng-model="fields.url" required /></div>
     </div>
     <div class="row">
         <div class="col s3"><label for="comment">Comment:</label></div>
@@ -13,6 +13,9 @@
     </div>
     <div class="row">
         <div class="col s3"><label for="tags">Tags:</label></div>
-        <div class="col s9"><input type="text" name="tags" ng-model="fields.tags" /></div>
+        <div class="col s9"><input type="text" name="tags" ng-model="fields.tags" required /></div>
+    </div>
+    <div class="row">
+        <div class="col s1 offset-s11"><button type=~"submit" class="btn btn-flat">Submit</button></div>
     </div>
 </form>
