@@ -35,11 +35,24 @@
             $scope.loadBookmarks();
         }
 
-        function testModalService() {
+        function addBookmark() {
             var addBookmarkModalDefaults = {
                 controller: 'AddBookmarkModalCtrl'
             };
-            wpModal.showModal(addBookmarkModalDefaults);
+            var tst = wpModal.showModal(addBookmarkModalDefaults);
+            tst.then(function(response){
+                var bookmarkData = {
+                    title: response.title,
+                    url: response.url,
+                    comment: response.comment,
+                    tags: response.tags
+                };
+                bookmarkAdded(bookmarkData);
+            }, function(){
+                console.log('TST promise rejected:', arguments);
+            }, function(){
+                console.log('TST promise progress back:', arguments);
+            })
         }
 
         function openTags($event) {
@@ -59,7 +72,7 @@
             return tagLinks.join(',');
         }
 
-        function addBookmark(){
+        function testModalService(){
             $uibModal.open({
                 animation: false,
                 templateUrl: 'templates/modal.html',
@@ -101,10 +114,8 @@
             });
         }
 
-        function bookmarkAdded(response) {
-            if (response.status === 201) {
-                $scope.waypoints.unshift(response.data);
-            }
+        function bookmarkAdded(newBookmark) {
+            $scope.waypoints.unshift(newBookmark);
         }
 
         function loadBookmarks() {
@@ -112,7 +123,7 @@
                 $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
                 if ($scope.bookmarkPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    $timeout($scope.loadBookmarks, 500);
+                    // $timeout($scope.loadBookmarks, 500);
                 }
             });
         }

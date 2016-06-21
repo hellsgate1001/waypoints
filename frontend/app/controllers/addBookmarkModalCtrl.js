@@ -29,7 +29,6 @@
         }
 
         function submitAddBookmark(formValid) {
-            console.log('submit it:', formValid);
             if (formValid === true) {
                 Bookmark.save($scope.fields, success, error);
             }
@@ -39,7 +38,7 @@
             }
 
             function success(response) {
-                console.log('Success:', response);
+                $uibModalInstance.close(response);
             }
         }
     };
