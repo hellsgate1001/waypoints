@@ -1,6 +1,5 @@
 // Import controllers
 import homeCtrl from './controllers/homeCtrl.js';
-import modalCtrl from './controllers/modalCtrl.js';
 import tagCloudCtrl from './controllers/tagCloudCtrl.js';
 import loginCtrl from './controllers/loginCtrl.js';
 import addBookmarkModalCtrl from './controllers/addBookmarkModalCtrl.js';
@@ -49,7 +48,6 @@ import wpModal from './services/modalService.js';
     }]);
 
     wp.controller('HomeCtrl', homeCtrl);
-    wp.controller('ModalCtrl', modalCtrl);
     wp.controller('TagCloudCtrl', tagCloudCtrl);
     wp.controller('LoginCtrl', loginCtrl);
     wp.controller('AddBookmarkModalCtrl', addBookmarkModalCtrl);

@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var homeCtrl = function($scope, $rootScope, $timeout, $uibModal, $document, $templateRequest, $sce, Bookmark, wpModal) {
+    var homeCtrl = function($scope, $rootScope, $timeout, $document, $templateRequest, $sce, Bookmark, wpModal) {
         var tagInfo = [];
 
         $rootScope.offset = 30;
@@ -26,8 +26,6 @@
         $scope.addBookmark = addBookmark;
         $scope.loadBookmarks = loadBookmarks;
         $scope.openTags = openTags;
-
-        $scope.testModalService = testModalService;
 
         activate();
 
@@ -72,48 +70,6 @@
             return tagLinks.join(',');
         }
 
-        function testModalService(){
-            $uibModal.open({
-                animation: false,
-                templateUrl: 'templates/modal.html',
-                controller: 'ModalCtrl',
-                resolve: {
-                    messageParts: {
-                        title: 'Add Bookmark',
-                        heading: 'Add a new bookmark',
-                        message: 'Test Message',
-                        messageTemplate: 'templates/includes/addBookmarkForm.html',
-                        valid: true,
-                        buttonSet: 'submitCancel',
-                        successFunction: bookmarkAdded
-                    }
-                }
-            }).result.then(function close(result){
-                if (result === true) {
-                    // Success, show a message which can be closed
-                    $uibModal.open({
-                        animation: false,
-                        templateUrl: 'templates/modal.html',
-                        controller: 'ModalCtrl',
-                        resolve: {
-                            messageParts: {
-                                title: 'Bookmark Added',
-                                heading: 'Successfully added bookmark & tags',
-                                message: 'Your bookmark and tags have been added',
-                                buttonSet: 'ok'
-                            }
-                        }
-                    }).result.then(function close(){}, function dismiss(){
-                        console.log('New updated thing dismissed');
-                    });
-                } else {
-                    // some problem with the post
-                }
-            }, function dismiss(){
-
-            });
-        }
-
         function bookmarkAdded(newBookmark) {
             $scope.waypoints.unshift(newBookmark);
         }
@@ -123,7 +79,7 @@
                 $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
                 if ($scope.bookmarkPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    $timeout($scope.loadBookmarks, 500);
+                    // $timeout($scope.loadBookmarks, 500);
                 }
             });
         }
