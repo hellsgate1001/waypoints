@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col s3"><label for="tags">Tags:</label></div>
-        <div class="col s9"><input type="text" name="tags" ng-model="fields.tags" uib-typeahead="tagName for tagName in tagNames | filter:filterTags($viewValue)" typeahead-on-select="tagSelected($item, $model, $label, $event)" required /></div>
+        <div class="col s9 typeahead"><input type="text" name="tags" ng-model="fields.tags" uib-typeahead="tagName for tagName in tagNames | filter:filterTags($viewValue)" typeahead-on-select="tagSelected($item, $model, $label, $event, $viewValue)" autocomplete="off" required /></div>
     </div>
     <div class="row">
         <div class="col s2 offset-s10"><button type=~"submit" class="btn btn-flat">Submit</button></div>
