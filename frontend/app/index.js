@@ -1,4 +1,5 @@
 // Import controllers
+import headerCtrl from './controllers/headerCtrl.js';
 import homeCtrl from './controllers/homeCtrl.js';
 import tagCloudCtrl from './controllers/tagCloudCtrl.js';
 import loginCtrl from './controllers/loginCtrl.js';
@@ -47,6 +48,7 @@ import wpModal from './services/modalService.js';
         $httpProvider.interceptors.push('AuthInterceptor');
     }]);
 
+    wp.controller('HeaderCtrl', headerCtrl);
     wp.controller('HomeCtrl', homeCtrl);
     wp.controller('TagCloudCtrl', tagCloudCtrl);
     wp.controller('LoginCtrl', loginCtrl);

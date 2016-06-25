@@ -22,7 +22,7 @@
         }
 
         function isAuthed() {
-            return auth.isAuthed ? auth.isAuthed() : false
+            return auth.isAuthed ? auth.isAuthed() : false;
         }
 
         function handleRequest(res) {
