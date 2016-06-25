@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var addBookmarkModalCtrl = function($scope, $uibModalInstance, Bookmark){
+    var addBookmarkModalCtrl = function($scope, $uibModalInstance, $rootScope, Bookmark){
         $scope.modalOptions = {
             title: 'Add Bookmark',
             heading: 'Add a new bookmark',
@@ -17,6 +17,23 @@
             title: '',
             comment: '',
             tags: ''
+        }
+        $scope.filterTags = filterTags;
+        $scope.tagSelected = tagSelected;
+
+        function tagSelected($item, $model, $label, $event) {
+            console.log('item:', $item);
+            console.log('model:', $model);
+            console.log('label:', $label);
+            console.log('event:', $event);
+        }
+
+        function filterTags(inputValue) {
+            var tags = inputValue.split(',')
+                , lastTag;
+
+            lastTag = tags.pop().trim();
+            return lastTag;
         }
 
         function dismiss(result) {

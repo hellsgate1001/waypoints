@@ -12,6 +12,7 @@
 
         $rootScope.bookmarkTagFilter = '';
         $rootScope.bookmarkCriteriaMatch = bookmarkCriteriaMatch;
+        $rootScope.tagNames = []
 
         activate();
 
@@ -49,9 +50,13 @@
         function loadTags() {
             $scope.tagPageInfo = Tag.query({offset: $scope.offset}, function(){
                 $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
+                $scope.tagPageInfo.results.forEach(function(tagResult){
+                    $rootScope.tagNames.push(tagResult.name);
+                });
+
                 if ($scope.tagPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    // $timeout($scope.loadTags, 350);
+                    $timeout($scope.loadTags, 350);
                 }
             });
         }
