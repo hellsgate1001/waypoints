@@ -24,6 +24,14 @@
             filename: 'bundle.js'
         },
         module: {
+            preloaders: [
+                // Javascript
+                {
+                    test: /\.js$/,
+                    loader: 'eslint',
+                    exclude: /node_modules/
+                }
+            ],
             loaders: [
                 {
                     test: /\.js$/,
@@ -54,6 +62,10 @@
                     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"
                 }
             ]
+        },
+        eslint: {
+            failOnWarning: false,
+            failOnError: true
         },
         plugins: [
             new webpack.DefinePlugin({
