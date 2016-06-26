@@ -1,4 +1,4 @@
-@import "materialize-src/sass/materialize";
+@import 'materialize-src/sass/materialize';
 
 $base-color: #607d8b;
 $darkest: #263238;
@@ -6,11 +6,20 @@ $darker: #455a64;
 $lighter: #b0bec5;
 $lightest: #eceff1;
 
+$light-grey: #ccc;
+$grey: #333;
+$dark-grey: #666;
+$white: #fff;
+
+$transparent-background-1: rgba(0, 0, 0, 0.6);
+$transparent-background-2: rgba(0, 0, 0, 0.85);
+
 $modal-padding: 24px;
 
 body {
     background-color: $lightest;
 }
+
 a {
     color: $darkest;
 }
@@ -29,13 +38,14 @@ a {
     }
 
     article {
-        background-color: #ffffff;
-        border: 1px solid #333;
+        background-color: $white;
+        border: 1px solid $grey;
         border-radius: 1rem;
         padding: 0.5rem;
         @media #{$small-and-down} {
-            padding: 0.3rem
+            padding: 0.3rem;
         }
+
         + article {
             margin-top: 18px;
         }
@@ -49,15 +59,18 @@ a {
 
 // Forms
 form {
-    input[type=text],
-    input[type=password] {
-        background-color: #fff;
-        border: 1px solid #666;
-        border-radius: 3px;
-        padding: 0 0.8em;
+    input {
+        &[type=text],
+        &[type=password] {
+            background-color: $white;
+            border: 1px solid $dark-grey;
+            border-radius: 3px;
+            padding: 0 0.8em;
+        }
     }
+
     label {
-        color:$darkest;
+        color: $darkest;
         font-size: 1.6rem;
     }
 }
@@ -72,7 +85,7 @@ form {
 
 // Modal
 .modal-container {
-    background: rgba(0, 0, 0, 0.6);
+    background: $transparent-background-1;
     display: none;
     height: 100%;
     left: 0;
@@ -80,23 +93,24 @@ form {
     top: 0;
     width: 100%;
 }
+
 .modal {
     max-height: 100%;
 
-    .modal-dialog {
-    }
     .modal-content {
         padding: 0;
     }
+
     .modal-header {
         background-color: $darkest;
-        color: #ffffff;
+        color: $white;
         padding: $modal-padding;
 
         h3 {
             margin-bottom: 0;
         }
     }
+
     .modal-body {
         padding: $modal-padding;
 
@@ -104,19 +118,21 @@ form {
             color: $darkest;
         }
     }
+
     .modal-footer {
         background-color: $base-color;
         border-radius: 0;
         padding: 0 $modal-padding;
 
         .btn-flat {
-            margin-left: 1rem;
             margin-bottom: 0;
+            margin-left: 1rem;
         }
     }
 }
+
 .modal-backdrop {
-    background: rgba(0, 0, 0, 0.85) none repeat scroll 0 0;
+    background: $transparent-background-2 none repeat scroll 0 0;
     height: 100%;
     left: 0;
     position: fixed;
@@ -132,21 +148,24 @@ form {
                 display: none;
                 width: 0;
             }
+
             &.sidebar-show {
-                background-color: #ccc;
+                background-color: $dark-grey;
                 display: block;
-                left:0.75rem;
+                left: 0.75rem;
                 position: absolute;
                 right: 0;
-                width: 100%;
                 transition: 2s;
+                width: 100%;
             }
         }
+
         label {
             color: $darkest;
             font-size: 1.2em;
+
             input {
-                background-color: #ffffff;
+                background-color: $white;
                 border: solid 1px $darkest;
                 border-radius: 0.3em;
                 font-size: 1em;
@@ -158,12 +177,14 @@ form {
                 }
             }
         }
+
         .tag-cloud--tag-list {
             .tag-cloud--tag-list--link {
                 display: block;
                 height: 100%;
                 padding-left: 0.75rem;
                 width: 100%;
+
                 &:hover {
                     background-color: $lightest;
                     color: $darker;
@@ -179,7 +200,8 @@ form {
         background-color: $darkest;
     }
 }
+
 .btn-flat {
     background-color: $darker;
-    color: #ffffff;
+    color: $white;
 }

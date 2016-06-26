@@ -2,6 +2,7 @@
     'use strict';
     var webpack = require('webpack');
     var path = require('path');
+    var sassLintPlugin = require('sasslint-webpack-plugin');
 
     var APP = path.resolve(__dirname, './app');
 
@@ -62,6 +63,50 @@
                     }
                     return o;
                 }, {})
+            }),
+            new sassLintPlugin({
+                configFile: '.sass-lint.yml',
+                ignoreFiles: [
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/materialize.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_switches.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_select.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_range.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_radio-buttons.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_input-fields.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_forms.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_file-input.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/forms/_checkboxes.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/date_picker/_default.time.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/date_picker/_default.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/date_picker/_default.date.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_waves.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_variables.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_typography.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_tooltip.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_toast.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_tabs.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_table_of_contents.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_slider.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_sideNav.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_roboto.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_preloader.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_prefixer.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_normalize.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_navbar.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_modal.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_mixins.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_materialbox.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_icons-material-design.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_grid.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_global.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_dropdown.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_color.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_collapsible.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_chips.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_carousel.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_cards.scss'),
+                    path.resolve(__dirname, 'app/scss/materialize-src/sass/components/_buttons.scss')
+                ]
             })
         ]
     };
