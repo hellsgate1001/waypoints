@@ -1,6 +1,6 @@
 ;(function(){
     'use strict';
-    var addBookmarkModalCtrl = function($scope, $uibModalInstance, $rootScope, Bookmark){
+    var addBookmarkModalCtrl = function($scope, $uibModalInstance, $http, $rootScope, Bookmark){
         var currentTags;
 
         $scope.modalOptions = {
@@ -22,6 +22,24 @@
         }
         $scope.filterTags = filterTags;
         $scope.tagSelected = tagSelected;
+        $scope.getTitle = getTitle;
+
+        function getTitle($event) {
+            var titleElement;
+
+            // Grab the title of the page from a given URL
+            console.log($event.target.value);
+            $http({
+                method: 'GET',
+                url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
+                params: {url: $event.target.value}
+            }).then(function success(response){
+                titleElement = document.getElementById('title');
+                titleElement.value = response.data['title'];
+            }, function error(response){
+                console.log('Error:', response);
+            });
+        }
 
         function tagSelected($item, $model, $label, $event) {
             var tagsArray = currentTags.replace(', ', ',').split(',')
@@ -32,12 +50,6 @@
             tagsArray.push($item);
             currentTags = tagsArray.join(', ');
             $scope.fields.tags = currentTags;
-            // console.log($scope.fields.tags);
-            // console.log('item:', $item);
-            // console.log('model:', $model);
-            // console.log('label:', $label);
-            // console.log('event:', $event);
-            // console.log(currentTags);
         }
 
         function filterTags(inputValue) {

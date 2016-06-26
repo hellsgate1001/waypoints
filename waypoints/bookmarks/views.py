@@ -1,7 +1,10 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, View
 
 from braces.views import CsrfExemptMixin
 from rest_framework import viewsets
+
+import urllib2
+from BeautifulSoup import BeautifulSoup as bs
 
 from waypoints.mixins import JSONResponseMixin
 from wptags.models import Tag
@@ -18,39 +21,15 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     serializer_class = BookmarkSerializer
     paginate_by = 5
 
-    # def get_queryset(self):
-    #     return self.queryset[0:10]
-
     def create(self, request, *args, **kwargs):
-        # Tags need to be processed as objects. To allow this, convert the
-        # posted tag strings to Tag objects
-        # tags = []
-        # request.data = request.data.copy()
-        # for t in request.data['tags'].split(','):
-        #     tag, created = Tag.objects.get_or_create(name=t.strip().lower())
-        #     tags.append(
-        #         {'id': tag.pk, 'name': tag.name}
-        #     )
-        # request.data['tags'] = tags
         return super(BookmarkViewSet, self).create(request, *args, **kwargs)
 
 
-class AddBookmark(CsrfExemptMixin, JSONResponseMixin, CreateView):
-    model = Bookmark
+class GetTitle(JSONResponseMixin, View):
+    def get(self, request, *args, **kwargs):
+        html = bs(urllib2.urlopen(request.GET['url']))
+        response = {
+            'title': html.title.string
+        }
 
-    def post(self, request, *args, **kwargs):
-        import pdb;pdb.set_trace()
-
-
-class UserBookmarkList(JSONResponseMixin, ListView):
-    def get_data(self, context):
-        return context.get('object_list', [])
-
-    def get_queryset(self):
-        return [
-            bookmark.to_dict()
-            for bookmark in Bookmark.objects.all()
-        ]
-
-    def render_to_response(self, context, **response_kwargs):
-        return self.render_to_json_response(context, **response_kwargs)
+        return self.render_to_json_response(response)
