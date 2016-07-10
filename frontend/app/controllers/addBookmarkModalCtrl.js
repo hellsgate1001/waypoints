@@ -28,14 +28,12 @@
             var titleElement;
 
             // Grab the title of the page from a given URL
-            console.log($event.target.value);
             $http({
                 method: 'GET',
                 url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
                 params: {url: $event.target.value}
             }).then(function success(response){
-                titleElement = document.getElementById('title');
-                titleElement.value = response.data['title'];
+                $scope.fields.title = response.data.title;
             }, function error(response){
                 console.log('Error:', response);
             });
