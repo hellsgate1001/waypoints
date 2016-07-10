@@ -1,7 +1,8 @@
 ;(function(){
     'use strict';
-    var addBookmarkModalCtrl = function($scope, $uibModalInstance, $http, $rootScope, Bookmark){
-        var currentTags;
+    var addBookmarkModalCtrl = function($scope, $uibModalInstance, $http, $rootScope, Bookmark, auth){
+        var currentTags
+            , authToken = auth.getToken();
 
         $scope.modalOptions = {
             title: 'Add Bookmark',
@@ -14,7 +15,7 @@
         };
         $scope.submitAddBookmark = submitAddBookmark;
         $scope.fields = {
-            user: 1,
+            user: auth.parseJwt(authToken).user_id,
             url: '',
             title: '',
             comment: '',
