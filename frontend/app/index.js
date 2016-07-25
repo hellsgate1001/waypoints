@@ -4,6 +4,7 @@ import homeCtrl from './controllers/homeCtrl.js';
 import tagCloudCtrl from './controllers/tagCloudCtrl.js';
 import loginCtrl from './controllers/loginCtrl.js';
 import addBookmarkModalCtrl from './controllers/addBookmarkModalCtrl.js';
+import addBookmarkSuccessModalCtrl from './controllers/addBookmarkSuccessModalCtrl.js';
 
 // Import directives
 import headerDirective from './directives/headerDirective.js';
@@ -53,6 +54,7 @@ import wpModal from './services/modalService.js';
     wp.controller('TagCloudCtrl', tagCloudCtrl);
     wp.controller('LoginCtrl', loginCtrl);
     wp.controller('AddBookmarkModalCtrl', addBookmarkModalCtrl);
+    wp.controller('AddBookmarkSuccessModalCtrl', addBookmarkSuccessModalCtrl);
 
     wp.directive('headerDirective', headerDirective);
     wp.directive('footerDirective', footerDirective);

@@ -45,12 +45,21 @@
                     comment: response.comment,
                     tags: response.tags
                 };
+
                 bookmarkAdded(bookmarkData);
+                displaySuccessModal();
             }, function(){
                 console.log('TST promise rejected:', arguments);
             }, function(){
                 console.log('TST promise progress back:', arguments);
             })
+        }
+
+        function displaySuccessModal() {
+            var addBookmarkSucessModalDefaults = {
+                controller: 'AddBookmarkSuccessModalCtrl'
+            };
+            var successModal = wpModal.showModal(addBookmarkSucessModalDefaults);
         }
 
         function openTags($event) {
@@ -79,7 +88,7 @@
                 $scope.waypoints = $scope.waypoints.concat($scope.bookmarkPageInfo.results);
                 if ($scope.bookmarkPageInfo.next !== null) {
                     $scope.offset += $scope.perPage;
-                    $timeout($scope.loadBookmarks, 500);
+                    // $timeout($scope.loadBookmarks, 500);
                 }
             });
         }
