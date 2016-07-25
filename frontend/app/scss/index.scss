@@ -226,3 +226,13 @@ form {
     background-color: $darker;
     color: $white;
 }
+
+// Type ahead drop-down
+.dropdown-menu {
+    background-color: $white;
+    height: 300px;
+    outline: 1px solid $dark-grey;
+    overflow: auto;
+    position: fixed;
+    z-index: 1060;
+}

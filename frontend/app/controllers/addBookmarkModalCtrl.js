@@ -22,6 +22,7 @@
             comment: '',
             tags: ''
         }
+        $scope.inputDims = {};
         $scope.filterTags = filterTags;
         $scope.tagSelected = tagSelected;
         $scope.getTitle = getTitle;
@@ -58,11 +59,39 @@
 
         function filterTags(inputValue) {
             var tags = inputValue.split(',')
-                , lastTag;
+                , lastTag
+                , tagInput = document.getElementById('tagInput');
+
+            if (Object.keys($scope.inputDims).length === 0) {
+                // Position the typeahead dropdown
+                positionDropdown(tagInput);
+            }
 
             currentTags = inputValue;
             lastTag = tags.pop().trim();
             return lastTag;
+        }
+
+        function positionDropdown(inputElement) {
+            var elements = document.querySelectorAll('.dropdown-menu');
+
+            $scope.inputDims = getInputDims(inputElement);
+
+            angular.element(elements[0]).css({
+                left: $scope.inputDims.left + 'px',
+                top: ($scope.inputDims.top + $scope.inputDims.height + 3) + 'px'
+            });
+        }
+
+        function getInputDims(inputElement) {
+            var rect = inputElement.getBoundingClientRect();
+
+            return {
+                top: Math.round(rect.top),
+                left: Math.round(rect.left),
+                width: Math.round(rect.right - rect.left),
+                height: Math.round(rect.bottom - rect.top)
+            };
         }
 
         function dismiss(result) {

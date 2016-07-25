@@ -52,7 +52,7 @@
                 console.log('TST promise rejected:', arguments);
             }, function(){
                 console.log('TST promise progress back:', arguments);
-            })
+            });
         }
 
         function displaySuccessModal() {
