@@ -22,7 +22,7 @@ import wpModal from './services/modalService.js';
 (function(){
     'use strict';
 
-    var wp = angular.module('wp', ['ui.router', 'ui.bootstrap', 'ngResource']);
+    var wp = angular.module('wp', ['ui.router', 'ui.bootstrap', 'ngResource', 'angular-spinkit']);
 
     wp.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
         $urlRouterProvider.otherwise('/');

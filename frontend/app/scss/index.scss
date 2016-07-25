@@ -13,6 +13,7 @@ $white: #fff;
 
 $transparent-background-1: rgba(0, 0, 0, 0.6);
 $transparent-background-2: rgba(0, 0, 0, 0.85);
+$transparent-background-light-1: rgba(255, 255, 255, 0.85);
 
 $modal-padding: 24px;
 
@@ -128,6 +129,15 @@ form {
             margin-bottom: 0;
             margin-left: 1rem;
         }
+    }
+
+    .loading-container {
+        background: $transparent-background-light-1;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
     }
 }
 

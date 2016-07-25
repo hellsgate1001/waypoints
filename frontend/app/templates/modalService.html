@@ -15,3 +15,6 @@
   <button id="closeModalOk" type="button" class="btn btn-flat" ng-click="dismiss()" ng-show="modalOptions.buttonSet==='ok'">OK</button>
   <button id="closeModalCancel" type="button" class="btn btn-flat" ng-click="modalOptions.dismiss()" ng-show="modalOptions.buttonSet==='cancel'">Cancel</button>
 </div>
+<div ng-if="showLoad" class="loading-container">
+    <wave-spinner></wave-spinner>
+</div>

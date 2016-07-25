@@ -4,6 +4,7 @@
         var currentTags
             , authToken = auth.getToken();
 
+        $scope.showLoad = false;
         $scope.modalOptions = {
             title: 'Add Bookmark',
             heading: 'Add a new bookmark',
@@ -28,6 +29,8 @@
         function getTitle($event) {
             var titleElement;
 
+            // Show the loading spinner
+            $scope.showLoad = true;
             // Grab the title of the page from a given URL
             $http({
                 method: 'GET',
@@ -35,7 +38,9 @@
                 params: {url: $event.target.value}
             }).then(function success(response){
                 $scope.fields.title = response.data.title;
+                $scope.showLoad = false;
             }, function error(response){
+                $scope.showLoad = false;
                 console.log('Error:', response);
             });
         }
