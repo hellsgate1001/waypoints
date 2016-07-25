@@ -6,7 +6,7 @@
             null,
             {
                 query: {
-                    isArray: false,
+                    isArray: true,
                     params: {offset: '@offset'},
                     transformResponse: function(data){
                         return JSON.parse(data);

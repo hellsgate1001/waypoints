@@ -5,9 +5,8 @@
         $scope.tagFilter = '';
         $scope.setBookmarkTagFilter = setBookmarkTagFilter;
         $scope.tagPageInfo = {};
-        $scope.offset = 0;
-        $scope.perPage = 30;
         $scope.loadTags = loadTags;
+        $scope.tagsLoaded = false;
         $scope.clearFilter = clearFilter;
 
         $rootScope.bookmarkTagFilter = '';
@@ -48,16 +47,12 @@
         }
 
         function loadTags() {
-            $scope.tagPageInfo = Tag.query({offset: $scope.offset}, function(){
-                $scope.tags = $scope.tags.concat($scope.tagPageInfo.results);
-                $scope.tagPageInfo.results.forEach(function(tagResult){
+            $scope.tagPageInfo = Tag.query({}, function(){
+                $scope.tags = $scope.tags.concat($scope.tagPageInfo);
+                $scope.tagsLoaded = true;
+                $scope.tagPageInfo.forEach(function(tagResult){
                     $rootScope.tagNames.push(tagResult.name);
                 });
-
-                if ($scope.tagPageInfo.next !== null) {
-                    $scope.offset += $scope.perPage;
-                    // $timeout($scope.loadTags, 350);
-                }
             });
         }
     };

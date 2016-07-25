@@ -189,6 +189,11 @@ form {
         }
 
         .tag-cloud--tag-list {
+            @media #{$large-and-up} {
+                height: 800px;
+                overflow: auto;
+            }
+
             .tag-cloud--tag-list--link {
                 display: block;
                 height: 100%;
@@ -200,6 +205,12 @@ form {
                     color: $darker;
                 }
             }
+        }
+    }
+
+    .tags-loading-animation {
+        .wave-spinner {
+            margin: 0 auto;
         }
     }
 }
