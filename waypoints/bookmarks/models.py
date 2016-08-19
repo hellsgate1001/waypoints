@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.db import models
+from django.db import models, IntegrityError
 from django.forms.models import model_to_dict
+
+from rest_framework import serializers
 
 from wptags.models import Tag
 
@@ -16,6 +18,9 @@ class Bookmark(models.Model):
     deleted = models.BooleanField(default=False)
     comment = models.TextField(blank=True)
     tags = models.ManyToManyField('wptags.Tag')
+
+    class Meta:
+        unique_together = ('user', 'url')
 
     def __str__(self):
         return self.title
@@ -34,4 +39,11 @@ class Bookmark(models.Model):
             u = self.user
         except get_user_model().DoesNotExist:
             self.user = get_user_model().objects.get(pk=1)
-        super(Bookmark, self).save(*args, **kwargs)
+
+        try:
+            super(Bookmark, self).save(*args, **kwargs)
+        except IntegrityError as e:
+            bookmark_error = {
+                'user_url': ['URL already saved for this user']
+            }
+            raise serializers.ValidationError(bookmark_error)

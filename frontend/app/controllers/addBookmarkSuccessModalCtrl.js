@@ -4,7 +4,7 @@
         $scope.modalOptions = {
             title: 'Add Bookmark',
             heading: 'Bokmark added successfully',
-            message: 'Your bookmark has been addedsuccessfully',
+            message: 'Your bookmark has been added successfully',
             buttonSet: 'ok',
             ok: ok
         };
