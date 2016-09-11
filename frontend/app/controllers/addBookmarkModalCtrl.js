@@ -28,22 +28,26 @@
         $scope.getTitle = getTitle;
 
         function getTitle($event) {
-            var titleElement;
+            var titleElement = angular.element(document.querySelector('#title'));
 
-            // Show the loading spinner
-            $scope.showLoad = true;
-            // Grab the title of the page from a given URL
-            $http({
-                method: 'GET',
-                url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
-                params: {url: $event.target.value}
-            }).then(function success(response){
-                $scope.fields.title = response.data.title;
-                $scope.showLoad = false;
-            }, function error(response){
-                $scope.showLoad = false;
-                console.log('Error:', response);
-            });
+            // Only grab the title when nothing has been entered in the title input yet
+            if (titleElement.val() === '') {
+                // Show the loading spinner
+                $scope.showLoad = true;
+
+                // Grab the title of the page from a given URL
+                $http({
+                    method: 'GET',
+                    url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
+                    params: {url: $event.target.value}
+                }).then(function success(response){
+                    $scope.fields.title = response.data.title;
+                    $scope.showLoad = false;
+                }, function error(response){
+                    $scope.showLoad = false;
+                    console.log('Error:', response);
+                });
+            }
         }
 
         function tagSelected($item, $model, $label, $event) {
