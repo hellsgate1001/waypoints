@@ -3,7 +3,7 @@
     var addBookmarkSuccessModalCtrl = function($scope, $uibModalInstance) {
         $scope.modalOptions = {
             title: 'Add Bookmark',
-            heading: 'Bokmark added successfully',
+            heading: 'Bookmark added successfully',
             message: 'Your bookmark has been added successfully',
             buttonSet: 'ok',
             ok: ok

@@ -5,7 +5,8 @@
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: '/templates/modalService.html'
+            template: require('../templates/modalService.html')
+            // templateUrl: '/templates/modalService.html'
         };
 
         var modalOptions = {

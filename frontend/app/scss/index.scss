@@ -138,6 +138,16 @@ form {
         position: absolute;
         top: 0;
         width: 100%;
+
+        .loading-message {
+            font-size: 2em;
+            margin: 2em auto 0;
+            text-align: center;
+        }
+
+        .wave-spinner {
+            margin-top: 80px;
+        }
     }
 }
 

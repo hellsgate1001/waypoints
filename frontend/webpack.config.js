@@ -34,6 +34,10 @@
             ],
             loaders: [
                 {
+                    test: /\.html$/,
+                    loader: 'raw',
+                },
+                {
                     test: /\.js$/,
                     loader: 'babel',
                     exclude: /node_modules/,

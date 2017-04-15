@@ -31,7 +31,7 @@
             var titleElement = angular.element(document.querySelector('#title'));
 
             // Only grab the title when nothing has been entered in the title input yet
-            if (titleElement.val() === '') {
+            if ($event.target.value !== '' && titleElement.val() === '') {
                 // Show the loading spinner
                 $scope.showLoad = true;
 
