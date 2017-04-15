@@ -26,6 +26,14 @@
         $scope.filterTags = filterTags;
         $scope.tagSelected = tagSelected;
         $scope.getTitle = getTitle;
+        $scope.clearTitleError = clearTitleError;
+        $scope.errors = {};
+
+        function clearTitleError($event) {
+            if ($event.target.value !== '') {
+                $scope.errors.title = '';
+            }
+        }
 
         function getTitle($event) {
             var titleElement = angular.element(document.querySelector('#title'));
@@ -41,11 +49,15 @@
                     url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
                     params: {url: $event.target.value}
                 }).then(function success(response){
-                    $scope.fields.title = decodeTitle(response.data.title);
+                    if (!angular.isUndefined(response)) {
+                        $scope.fields.title = decodeTitle(response.data.title);
+                    } else {
+                        $scope.errors.title = 'Sorry, no title could be found';
+                    }
                     $scope.showLoad = false;
                 }, function error(response){
                     $scope.showLoad = false;
-                    console.log('Error:', response);
+                    console.log('Error:');
                 });
             }
         }
