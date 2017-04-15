@@ -41,7 +41,7 @@
                     url: process.env.API_BASE_URL + 'api/bookmarks/get-title/',
                     params: {url: $event.target.value}
                 }).then(function success(response){
-                    $scope.fields.title = response.data.title;
+                    $scope.fields.title = decodeTitle(response.data.title);
                     $scope.showLoad = false;
                 }, function error(response){
                     $scope.showLoad = false;
@@ -50,9 +50,17 @@
             }
         }
 
+        function decodeTitle(title) {
+            var txt = document.createElement('textarea');
+
+            txt.innerHTML = title;
+            return txt.value;
+        }
+
         function tagSelected($item, $model, $label, $event) {
             var tagsArray = currentTags.replace(', ', ',').split(',')
                 , last;
+
             // Remove the last item
             last = tagsArray.pop();
             // Add the selected value to the array
