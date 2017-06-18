@@ -8,6 +8,7 @@
         require('angular-ui-bootstrap');
         require('angular-resource');
         require('angular-spinkit');
+        require('vue');
 
         // Styles
         require('../../node_modules/angular-spinkit/build/angular-spinkit.min.css')
