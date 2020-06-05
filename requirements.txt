@@ -2,7 +2,7 @@ backports.shutil-get-terminal-size==1.0.0
 BeautifulSoup==3.2.1
 decorator==4.0.9
 DeliciousAPI==1.6.7
-Django==1.9.5
+Django==1.11.29
 django-braces==1.8.1
 djangorestframework==3.3.3
 djangorestframework-jwt==1.8.0
