@@ -2,7 +2,7 @@
     'use strict';
     var bookmarkFactory = function($resource){
         return $resource(
-            process.env.API_BASE_URL + 'api/bookmarks/bookmarks/',
+            'http://127.0.0.1:8010/api/bookmarks/bookmarks/',
             null,
             {
                 query: {

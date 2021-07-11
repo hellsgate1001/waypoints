@@ -5,7 +5,7 @@
             // automatically attach Authorization header
             request: function(config) {
                 var token = auth.getToken();
-                if (config.url.indexOf(process.env.API_BASE_URL) === 0 && token) {
+                if (config.url.indexOf('http://127.0.0.1:8010/') === 0 && token) {
                     config.headers.Authorization = 'JWT ' + token;
                 }
                 // if (token) {
@@ -16,7 +16,7 @@
 
             // If a token was sent back, save it
             response: function(res) {
-                if (res.config.url.indexOf(process.env.API_BASE_URL) === 0 && res.data.token) {
+                if (res.config.url.indexOf('http://127.0.0.1:8010/') === 0 && res.data.token) {
                     auth.saveToken(res.data.token);
                 }
                 return res;

@@ -2,7 +2,7 @@
     'use strict';
     var tagFactory = function($resource){
         return $resource(
-            process.env.API_BASE_URL + 'api/tags/tags/',
+            'http://127.0.0.1:8010/api/tags/tags/',
             null,
             {
                 query: {

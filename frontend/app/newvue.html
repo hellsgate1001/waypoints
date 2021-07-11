@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Waypoints</title>
+         <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    </head>
+    <body>
+        <header header-directive></header>
+        <div class="container">
+            <div id="main" class="main row">
+                <div id="sidebar" class="col s12 m3 tag-cloud sidebar" ui-view="tagCloud">
+
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Search"
+                                id="tagSearch"
+                                type="text"
+                                v-model='searchValue'
+                                class="validate">
+                          <label for="tagSearch">Tag Search</label>
+                        </div>
+                      </div>
+
+                        <a v-on:click='search(searchValue, $event)'
+                        class="waves-effect waves-light btn">search</a>
+                        <a v-on:click='loadTags'
+                        class="waves-effect waves-light btn">load</a>
+                    </form>
+                    <div class="output">
+                        <p>{{ searchValue }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <a v-on:click='toggleReverse'
+                        class="waves-effect waves-light btn">reverse</a>
+                      <ul class='collection'>
+                          <li class='collection-item' v-for='item in sort(tags)'>
+                              <a href="javascript:;" @click='selectTag(item)'>{{ item.name }}</a>
+                          </li>
+                      </ul>
+                  </div>
+                </div>
+                <div id="content" class="col s12 m9" v-cloak>
+                    <h2>{{item.name}}</h2>
+                    <a v-on:click='loadBookmarks'
+                        class="waves-effect waves-light btn">load bookmarks</a>
+
+                      <ul class='collection'>
+                          <li class='collection-item' v-for='item in sort(bookmarks)'>
+                              <a href="javascript:;" @click='selectTag(item)'>{{ item.name }}</a>
+                          </li>
+                      </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <footer footer-directive></footer>
+        <div id="modal-container" class="modal-container"></div>
+          <!-- Compiled and minified JavaScript -->
+          <script
+              src="https://code.jquery.com/jquery-2.2.4.min.js"
+              integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+              crossorigin="anonymous"></script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="vue/main.js"></script>
+    </body>
+</html>
